@@ -1,0 +1,23 @@
+// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
+// then press Enter. You can now see whitespace characters in your code.
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        Algs alg = new Algs();
+        String[] anna = {"Zebra", "alpha"};
+        String[] annabeth = {"Zebra", "alpha"};
+        String[] bigThree = {"Zeus" , "Poseidon", "Hades"};
+        String[] godesses = {"Athena", "Demeter", "Persephone", "Hera"};
+        alg.selectionSort(anna);
+        System.out.println();
+        alg.selectionSort(bigThree);
+        System.out.println();
+        alg.selectionSort(godesses);
+        System.out.println();
+
+
+        alg.insertionSort(annabeth);
+    }
+
+}
