@@ -1,0 +1,62 @@
+import java.sql.SQLOutput;
+
+public class Algs {
+    public static void print(String[] percy){
+        String printer = "[";
+        for(int i = 0; i<percy.length-1; i++){
+            printer+= percy[i] + ", ";
+        }
+        printer += percy[percy.length-1];
+        System.out.println( printer + "]");
+    }
+
+    public static int findMini(int index, String[] percy){
+        int numChanged = 0;
+        String min = percy[index];
+        for(int i = index; i<percy.length; i++){
+            if(min.compareToIgnoreCase(percy[i]) > 0){
+                numChanged++;
+                min = percy[i];
+                index = i;
+            }
+        }
+        System.out.println("Minimum Updates: " + numChanged);
+        return index;
+    }
+
+    public static void switcharoo (String[] percy, int p, int a){
+        String pause = percy[p];
+        percy[p] = percy[a];
+        percy[a] = pause;
+    }
+
+    public static void selectionSort(String[] percy){
+        int swapperupper = 0;
+        for(int i = 0; i<percy.length;i++){
+            int mini = findMini(i, percy);
+            if (mini != i){
+                switcharoo(percy, i, mini);
+                swapperupper++;
+            }
+            print(percy);
+        }
+        System.out.println("Swaps: " + swapperupper);
+    }
+
+    public static void insertionSort(String[] percy){
+        int swapperupper = 0;
+        for(int i = 1; i< percy.length; i++){
+            String pause = percy[i];
+            int index = i;
+            while(index>0 && pause.compareToIgnoreCase(percy[index-1])<=0){
+                switcharoo(percy, index, index-1);
+                swapperupper ++;
+                index--;
+            }
+            print(percy);
+        }
+        System.out.println("Swaps: " + swapperupper);
+    }
+
+
+}
