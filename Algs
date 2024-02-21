@@ -1,5 +1,5 @@
 import java.sql.SQLOutput;
-
+import java.util.ArrayList;
 public class Algs {
     public static void print(String[] percy){
         String printer = "[";
@@ -59,4 +59,119 @@ public class Algs {
     }
 
 
+
+    public static void printer(ArrayList<String> percy){
+        String printer = "[";
+        for(int i = 0; i<percy.size()-1; i++){
+            printer+= percy.get(i) + ", ";
+        }
+        printer += percy.get(percy.size()-1);
+        System.out.println( printer + "]");
+    }
+
+    public static int findMiny(int index, ArrayList<String> percy){
+        int numChanged = 0;
+        String min = percy.get(index);
+        for(int i = index; i<percy.size(); i++){
+            if(min.compareToIgnoreCase(percy.get(i)) > 0){
+                numChanged++;
+                min = percy.get(i);
+                index = i;
+            }
+        }
+        System.out.println("Minimum Updates: " + numChanged);
+        return index;
+    }
+
+    public static void switcharoony (ArrayList<String> percy, int p, int a){
+        String pause = percy.get(p);
+        percy.set(p,percy.get(a));
+        percy.set(a, pause);
+    }
+
+    public static void selectionSorter(ArrayList<String> percy){
+        int swapperupper = 0;
+        for(int i = 0; i<percy.size();i++){
+            int mini = findMiny(i, percy);
+            if (mini != i){
+                switcharoony(percy, i, mini);
+                swapperupper++;
+            }
+            printer(percy);
+        }
+        System.out.println("Swaps: " + swapperupper);
+    }
+
+    public static void insertionSorter(ArrayList<String>percy){
+        int swapperupper = 0;
+        for(int i = 1; i< percy.size(); i++){
+            String pause = percy.get(i);
+            int index = i;
+            while(index>0 && pause.compareToIgnoreCase(percy.get(index-1))<=0){
+                switcharoony(percy, index, index-1);
+                swapperupper ++;
+                index--;
+            }
+            printer(percy);
+        }
+        System.out.println("Swaps: " + swapperupper);
+    }
+
+
+    public static void printerer(ArrayList<Integer> percy){
+        String printer = "[";
+        for(int i = 0; i<percy.size()-1; i++){
+            printer+= percy.get(i) + ", ";
+        }
+        printer += percy.get(percy.size()-1);
+        System.out.println( printer + "]");
+    }
+
+    public static int findMinyer(int index, ArrayList<Integer> percy){
+        int numChanged = 0;
+        int min = percy.get(index);
+        for(int i = index; i<percy.size(); i++){
+            if(min>percy.get(i)){
+                numChanged++;
+                min = percy.get(i);
+                index = i;
+            }
+        }
+        System.out.println("Minimum Updates: " + numChanged);
+        return index;
+    }
+
+    public static void switcharoonyer (ArrayList<Integer> percy, int p, int a){
+        int pause = percy.get(p);
+        percy.set(p,percy.get(a));
+        percy.set(a, pause);
+    }
+
+    public static void selectionSorterer(ArrayList<Integer> percy){
+        int swapperupper = 0;
+        for(int i = 0; i<percy.size();i++){
+            int mini = findMinyer(i, percy);
+            if (mini != i){
+                switcharoonyer(percy, i, mini);
+                swapperupper++;
+            }
+            printerer(percy);
+        }
+        System.out.println("Swaps: " + swapperupper);
+    }
+
+    public static void insertionSorterer(ArrayList<Integer>percy){
+        int swapperupper = 0;
+        for(int i = 1; i< percy.size(); i++){
+            int pause = percy.get(i);
+            int index = i;
+            while(index>0 && pause<=percy.get(index-1)){
+                switcharoonyer(percy, index, index-1);
+                swapperupper ++;
+                index--;
+            }
+            printerer(percy);
+        }
+        System.out.println("Swaps: " + swapperupper);
+    }
 }
